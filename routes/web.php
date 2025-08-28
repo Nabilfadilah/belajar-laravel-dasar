@@ -50,3 +50,10 @@ Route::view('/hello', 'hello', ['name' => 'GOBILL']);
 Route::get('/hello-again', function () {
     return view('hello', ['name' => 'GOBILL']);
 });
+//----------------------------------
+
+// Nested View Directory
+// view bisa disimpan dalam directory lagi dalam directory views
+Route::get('/hello-world', function () {
+    return view('hello.world', ['name' => 'fadilah']);
+});

@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class ViewTest extends TestCase
 {
+    // basic view
     public function testView()
     {
         $this->get('/hello')
@@ -15,5 +16,19 @@ class ViewTest extends TestCase
 
         $this->get('/hello-again')
             ->assertSeeText("Hello GOBILL");
+    }
+
+    // nested view directory
+    public function testNested()
+    {
+        $this->get('/hello-world')
+            ->assertSeeText("World fadilah");
+    }
+
+    // test view tanpa routing
+    public function testViewWithRoute()
+    {
+        $this->view('hello', ['name' => 'Fadilah'])
+            ->assertSeeText("Hello Fadilah");
     }
 }

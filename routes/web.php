@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Basic route
+// Route::'method'($url, $callback);
+Route::get('/pzn', function () {
+    return "Hello Nabil Fadilah";
+});
+
+// Redirect, ke satu halaman ke halaman lain
+// Route::redirect(from, to)
+Route::redirect('/youtube', '/pzn');
+
+// Fallback Route, yaitu callback yg akan dieksekusi ketika
+// tidak ada route yg cocok dengan halaman yg diakses
+// Route::fallback(closure);
+Route::redirect('/youtube', '/pzn');
+Route::fallback(function () {
+    return "404";
+});

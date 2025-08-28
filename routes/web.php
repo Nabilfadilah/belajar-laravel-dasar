@@ -34,3 +34,19 @@ Route::redirect('/youtube', '/pzn');
 Route::fallback(function () {
     return "404";
 });
+//-------------------------------------------------
+
+// rendering view
+// Route::view(url, template, array)
+// Route::get('/hello', function () {
+//     return view('hello');
+// });
+
+// kita bisa tambah blade variabel untuk nama
+// view(template, array)
+Route::view('/hello', 'hello', ['name' => 'GOBILL']);
+
+// Route::view(url, template, array)
+Route::get('/hello-again', function () {
+    return view('hello', ['name' => 'GOBILL']);
+});

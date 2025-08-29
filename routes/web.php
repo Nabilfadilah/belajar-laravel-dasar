@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InputController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -135,3 +136,6 @@ Route::post('/input/hello/first', [\App\Http\Controllers\InputController::class,
 
 // file upload
 Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'upload']); // 'upload' = method
+
+// response
+Route::get('/response/hello', [\App\Http\Controllers\ResponseController::class, 'response']);

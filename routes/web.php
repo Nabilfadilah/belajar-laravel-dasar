@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InputController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -121,3 +122,13 @@ Route::get('/controller/hello/request', [\App\Http\Controllers\HelloController::
 
 // Route::get('controller/hello', [\App\Http\Controllers\HelloController::class, 'HelloController@hello']);
 Route::get('controller/hello/{name}', [\App\Http\Controllers\HelloController::class, 'hello']);
+
+// request input
+Route::get('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
+// Route::post('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
+// Route::get('/input/hello', [InputController::class, 'hello']);
+// Route::post('/input/hello', [InputController::class, 'hello']);
+
+
+// nested input
+Route::post('/input/hello/first', [\App\Http\Controllers\InputController::class, 'helloFirst']);

@@ -57,3 +57,60 @@ Route::get('/hello-again', function () {
 Route::get('/hello-world', function () {
     return view('hello.world', ['name' => 'fadilah']);
 });
+
+// route parameter
+Route::get('/products/{id}', function ($productId) {
+    return "Products : " . $productId;
+});
+// Route::get('/products/{product}/items/{item}', function ($productId, $itemId) {
+//     return "Products : " . $productId . ", Items : " . $itemId;
+// });
+
+// regular expression constraint
+Route::get('/categories/{id}', function (string $categoryId) {
+    return "Categories : " .  $categoryId;
+})->where('id', '[0-9]+');
+
+// optional route parameter, id ? (tanda tanya)
+Route::get('/users/{id?}', function (string $userId = '404') {
+    return "Users : " . $userId;
+});
+
+// routing conflict
+Route::get('/conflict/abil', function () {
+    return "Conflict Nabil Fadilah";
+});
+Route::get('/conflict/{name}', function (string $name) {
+    return "Conflict $name";
+});
+
+// named route
+Route::get('/products/{id}', function ($productId) {
+    return "Products : " . $productId;
+})->name('product.detail');
+
+Route::get('/products/{product}/items/{item}', function ($productId, $itemId) {
+    return "Products : " . $productId . ", Items : " . $itemId;
+})->name('product.item.detail');
+
+Route::get('/categories/{id}', function (string $categoryId) {
+    return "Categories : " . $categoryId;
+})->where('id', '[0-9]')->name('category.detail');
+
+Route::get('/users/{id?}', function (string $userId = '404') {
+    return "Users : " . $userId;
+})->name('user.detail');
+
+// menggunakan named route
+Route::get('/produk/{id}', function ($id) {
+    $link = route('product.detail', [
+        'id' => $id
+    ]);
+    return "Link : " . $link;
+});
+
+Route::get('/produk-redirect/{id}', function ($id) {
+    return redirect()->route('product.detail', [
+        'id' => $id
+    ]);
+});

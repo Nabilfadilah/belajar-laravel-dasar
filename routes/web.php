@@ -139,3 +139,12 @@ Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'uploa
 
 // response
 Route::get('/response/hello', [\App\Http\Controllers\ResponseController::class, 'response']);
+// response header
+Route::get('/response/header', [\App\Http\Controllers\ResponseController::class, 'header']);
+// response type
+Route::prefix("/response/type")->group(function () {
+    Route::get('/view', [\App\Http\Controllers\ResponseController::class, 'responseView']);
+    Route::get('/json', [\App\Http\Controllers\ResponseController::class, 'responseJson']);
+    Route::get('/file', [\App\Http\Controllers\ResponseController::class, 'responseFile']);
+    Route::get('/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
+});

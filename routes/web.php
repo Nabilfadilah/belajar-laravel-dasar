@@ -116,5 +116,8 @@ Route::get('/produk-redirect/{id}', function ($id) {
 });
 
 // route controller
+// request
+Route::get('/controller/hello/request', [\App\Http\Controllers\HelloController::class, 'hello']);
+
 // Route::get('controller/hello', [\App\Http\Controllers\HelloController::class, 'HelloController@hello']);
 Route::get('controller/hello/{name}', [\App\Http\Controllers\HelloController::class, 'hello']);

@@ -132,3 +132,6 @@ Route::get('/input/hello', [\App\Http\Controllers\InputController::class, 'hello
 
 // nested input
 Route::post('/input/hello/first', [\App\Http\Controllers\InputController::class, 'helloFirst']);
+
+// file upload
+Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'upload']); // 'upload' = method

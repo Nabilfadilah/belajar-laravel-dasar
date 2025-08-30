@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ContohMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -29,6 +30,11 @@ class Kernel extends HttpKernel
      * @var array<string, array<int, class-string|string>>
      */
     protected $middlewareGroups = [
+        // tambah middleware grup
+        'abl' => [
+            ContohMiddleware::class
+        ],
+
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,

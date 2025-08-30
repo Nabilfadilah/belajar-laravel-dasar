@@ -166,3 +166,19 @@ Route::get('/redirect/name/{name}', [\App\Http\Controllers\RedirectController::c
 Route::get('/redirect/action', [\App\Http\Controllers\RedirectController::class, 'redirectAction']);
 // redirect to external domain
 Route::get('/redirect/abl', [\App\Http\Controllers\RedirectController::class, 'redirectAway']);
+
+// route middleware
+Route::get('/middleware/api', function () {
+    return "OK";
+})->middleware([\App\Http\Middleware\ContohMiddleware::class]);
+// middleware group
+Route::get('/middleware/group', function () {
+    return "GROUP";
+})->middleware(['abl']); // 'abl' semua yang ada di grup akan digunakan!
+// Middleware Parameter
+Route::get('/middleware/api', function () {
+    return "OK";
+})->middleware(['sample: abl, 401']);
+// Exclude middleware
+Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'upload'])
+    ->middleware([\App\Http\Middleware\VerifyCsrfToken::class]);

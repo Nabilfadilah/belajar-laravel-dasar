@@ -148,3 +148,10 @@ Route::prefix("/response/type")->group(function () {
     Route::get('/file', [\App\Http\Controllers\ResponseController::class, 'responseFile']);
     Route::get('/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
 });
+
+// membuat cookie
+Route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
+// menerima cookie
+Route::get('/cookie/get', [\App\Http\Controllers\CookieController::class, 'getCookie']);
+// clear cookie
+Route::get('/cookie/clear', [\App\Http\Controllers\CookieController::class, 'clearCookie']);

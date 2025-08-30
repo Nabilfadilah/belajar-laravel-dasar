@@ -155,3 +155,14 @@ Route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'creat
 Route::get('/cookie/get', [\App\Http\Controllers\CookieController::class, 'getCookie']);
 // clear cookie
 Route::get('/cookie/clear', [\App\Http\Controllers\CookieController::class, 'clearCookie']);
+
+// redirect
+Route::get('/redirect/from', [\App\Http\Controllers\RedirectController::class, 'redirectFrom']);
+Route::get('/redirect/to', [\App\Http\Controllers\RedirectController::class, 'redirectTo']);
+// redirect to named routes
+Route::get('/redirect/name', [\App\Http\Controllers\RedirectController::class, 'redirectName']);
+Route::get('/redirect/name/{name}', [\App\Http\Controllers\RedirectController::class, 'redirectHello'])->name('redirect-hello');
+// redirect to controller action
+Route::get('/redirect/action', [\App\Http\Controllers\RedirectController::class, 'redirectAction']);
+// redirect to external domain
+Route::get('/redirect/abl', [\App\Http\Controllers\RedirectController::class, 'redirectAway']);
